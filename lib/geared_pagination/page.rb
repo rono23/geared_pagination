@@ -39,7 +39,8 @@ module GearedPagination
     end
 
     def before_last?
-      number < recordset.page_count
+      return false if @portion.ratios[number] > records.length
+      number == 1 ? number < recordset.page_count : number <= recordset.page_count
     end
 
 

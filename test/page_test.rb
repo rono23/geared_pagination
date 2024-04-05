@@ -56,7 +56,7 @@ class GearedPagination::PageTest < ActiveSupport::TestCase
     assert_equal [3, 2], third_page.records.ids
     assert_equal [], fourth_page.records.ids
     assert       second_page.before_last?
-    assert_not   third_page.before_last?
+    assert       third_page.before_last?
     assert_not   fourth_page.before_last?
   end
 
@@ -80,7 +80,7 @@ class GearedPagination::PageTest < ActiveSupport::TestCase
     third_page = GearedPagination::Recordset.new(Recording.all, **options).page(second_page.next_param)
     assert_equal [4, 3, 2], second_page.records.ids
     assert_equal [1], third_page.records.ids
-    assert_not   second_page.before_last?
+    assert       second_page.before_last?
     assert_not   third_page.before_last?
   end
 
